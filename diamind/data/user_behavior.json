@@ -1,0 +1,26 @@
+{
+  "previous_purchases": [
+    {
+      "shape": "ROUND",
+      "carat": 1.25,
+      "color": "G",
+      "clarity": "VS1",
+      "cut": "EX",
+      "polish": "EX",
+      "symmetry": "EX",
+      "lab": "GIA"
+    }
+  ],
+  "preferences": {
+    "shapes": ["ROUND", "OVAL"],
+    "min_carat": 1.0,
+    "max_carat": 2.0,
+    "max_price_per_carat": 6500,
+    "preferred_labs": ["GIA"],
+    "quality_focus": "cut_and_polish"
+  },
+  "search_history": [
+    "round brilliant 1.5 carat triple excellent",
+    "GIA certified round VS1 under 6000"
+  ]
+}

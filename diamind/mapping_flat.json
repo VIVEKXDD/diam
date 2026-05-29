@@ -1,0 +1,117 @@
+{
+  "canonical_to_all_suppliers": {
+    "stone_id":            ["Stone No", "Packet Id"],
+    "cert_number":         ["Report No", "Certificate No"],
+    "lab":                 ["Lab"],
+    "availability":        ["Status"],
+    "location":            ["Location", "Loc"],
+    "shape":               ["Shape"],
+    "carat":               ["Carats", "Cts", "Carat Weight"],
+    "color":               ["Color", "Col", "Color (IGI)"],
+    "clarity":             ["Clarity", "Cla", "Purity (IGI)"],
+    "cut":                 ["Cut"],
+    "polish":              ["Polish", "Pol"],
+    "symmetry":            ["Sym", "Symm"],
+    "fluorescence":        ["Flour", "Fls", "Fl"],
+    "fluorescence_color":  ["Fl_Co"],
+    "rap_price":           ["Rap", "Rap. Price", "Rap Rte"],
+    "rap_value":           ["value", "Rap Vlu"],
+    "rap_discount":        ["Disc %", "Rap Dis"],
+    "price_per_carat":     ["Price/Ct", "Amount", "Rate", "Vendor Price"],
+    "price":               ["Amount", "Total Amount", "Karigar"],
+    "length":              ["Length", "Lenth"],
+    "width":               ["Width"],
+    "depth":               ["Depth"],
+    "measurements":        ["Measurement"],
+    "table_pct":           ["Table %", "Table"],
+    "depth_pct":           ["Depth %", "Depth"],
+    "crown_angle":         ["Crown Angle", "Ca"],
+    "crown_height":        ["Crown Height", "Ch"],
+    "pav_angle":           ["Pav Angle", "Pa"],
+    "pav_depth":           ["Pav Height", "Pd"],
+    "ratio":               ["Ratio"],
+    "girdle":              ["Girdle Desc", "Girdle", "Girdle Thickness", "Grdl"],
+    "girdle_pct":          ["Girdle%", "Girdle %", "Girdle Size", "Gd_P"],
+    "lower_half":          ["Lower", "lower Half", "Lwr"],
+    "culet":               ["Culet", "CULET"],
+    "milky":               ["milky", "Milky"],
+    "shade":               ["shade", "Shade"],
+    "white_table":         ["White Table", "CB"],
+    "white_side":          ["White Side", "CW"],
+    "table_black":         ["Table Black", "SB"],
+    "side_black":          ["Side Black", "SW"],
+    "table_open":          ["Table Open"],
+    "pav_open":            ["Pav Open"],
+    "crown_open":          ["Crown Open"],
+    "hna":                 ["HNA", "Ha"],
+    "eye_clean":           ["Ec"],
+    "inclusion_type":      ["Incl"],
+    "inclusions":          ["Key To Symbols", "Key To Sym"],
+    "bgm":                 ["BGM Comment"],
+    "natts":               ["Natts"],
+    "origin":              ["Origin", "Kapan Origin", "Rough Origin"],
+    "comments":            ["Comments 1", "Comment", "Comt"],
+    "cert_date":           ["Report Date", "Dt"],
+    "cert_comments":       ["Report Comments"],
+    "description":         ["Description"],
+    "inscription":         ["Inscription"],
+    "sheet_date":          ["MarketSheetDate"],
+    "item_type":           ["Item Name"],
+    "batch":               ["Batch"],
+    "colour_variety":      ["Colour"],
+    "mm_size":             ["MM Size"],
+    "sieve_size":          ["Sieve Size"],
+    "company_grade":       ["Company Grade"],
+    "vendor_name":         ["Vendor Name"]
+  },
+  "warnings": {
+    "stone_id": {
+      "Karigar": "All blank — Karigar sells melee goods parcels, not individual certified stones."
+    },
+    "cert_number": {
+      "Karigar": "All blank — Karigar sells melee goods parcels, not individual certified stones."
+    },
+    "lab": {
+      "Karigar": "All blank — Karigar sells melee goods parcels, not individual certified stones."
+    },
+    "price_per_carat": {
+      "Vaibhav":  "Column named \"Amount\" but contains price PER CARAT — not total price. All other suppliers use \"Amount\" for total price.",
+      "Karigar":  "\"Vendor Price\" = cost price Karigar pays its own vendor — not the same as other suppliers' ask price."
+    },
+    "price": {
+      "Vaibhav": "Column named \"Total Amount\" for total price. All other suppliers use \"Amount\".",
+      "Karigar": "\"Karigar\" column = Karigar's marked-up sell price per carat — not a total parcel price."
+    },
+    "length": {
+      "Vaibhav": "\"Lenth\" is a typo in source data — normalize to canonical length on load."
+    },
+    "measurements": {
+      "Ratnakala": "No combined measurements column. Concatenate Length + Width + Depth into one string at text-build time."
+    },
+    "depth_pct": {
+      "Zhaveri": "\"Depth\" = depth percentage (depth_pct), NOT raw mm depth. Ratnakala/Vaibhav \"Depth\" = raw mm."
+    },
+    "pav_angle": {
+      "Zhaveri": "\"Pa\" = pav_angle. All other suppliers use \"Pav Angle\"."
+    },
+    "pav_depth": {
+      "Zhaveri": "\"Pd\" = pav_depth. All other suppliers use \"Pav Height\"."
+    },
+    "carat": {
+      "Karigar": "\"Carat Weight\" = average weight per stone in a parcel size range — not a single certified stone weight. Do not use for stone-level comparisons."
+    },
+    "color": {
+      "Karigar": "\"Color (IGI)\" is a grade RANGE (e.g. G-H) — not a single GIA grade. Do not use for stone-level comparisons."
+    },
+    "clarity": {
+      "Karigar": "\"Purity (IGI)\" is a grade RANGE (e.g. VS-SI) — not a single GIA grade. Do not use for stone-level comparisons."
+    }
+  },
+  "_notes": {
+    "collision_fields": {
+      "price_per_carat_vs_price": "Both price_per_carat and price share the source name \"Amount\" (Ratnakala, Glowstar, Zhaveri use it for total price; Vaibhav uses it for per-carat price). The script resolves this via supplier-aware tie-breaking: if a supplier is named, the first canonical field whose alias list contains the column AND is consistent with that supplier wins.",
+      "depth_vs_depth_pct": "Ratnakala and Vaibhav use \"Depth\" for raw mm depth (canonical: depth). Zhaveri uses \"Depth\" for depth percentage (canonical: depth_pct). Without a supplier hint the script maps to depth_pct and warns.",
+      "resolution_strategy": "When two canonical fields share a source alias, pass --supplier on the CLI. The script will prefer the canonical field that makes sense for that supplier."
+    }
+  }
+}

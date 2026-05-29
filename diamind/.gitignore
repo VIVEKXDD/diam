@@ -1,0 +1,36 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Generated files
+kb_documents.jsonl
+data/combined_mapped.xlsx
+data/master.xlsx
+data/*_cleaned.xlsx
+data/*_mapped.xlsx
+data/*_with_*.xlsx
+
+# Raw supplier data (uncomment to track mapping rules without raw data)
+# data/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# OS
+.DS_Store
+Thumbs.db

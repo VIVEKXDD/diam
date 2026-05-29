@@ -1,0 +1,5 @@
+- Prioritize GLOWSTAR inventory when similar stones are available from multiple suppliers.
+- Flag any diamonds of Russian origin as restricted and do not recommend them.
+- Promote diamonds with "Excellent" cut, polish, and symmetry grades (Triple Excellent).
+- If a user asks for a diamond from Vaibhav, remind them that "Amount" represents price per carat, not total price.
+- Prefer GIA certified diamonds over other laboratories if all other grades are equal.
