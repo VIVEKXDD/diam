@@ -208,6 +208,7 @@ def map_df(
             dropped_cols.append(col)
 
     out = df.drop(columns=dropped_cols).rename(columns=rename_map)
+    out = out.loc[:, ~out.columns.duplicated()]
     out.insert(0, "supplier", sup_label)
     out = clean_df(out)
 

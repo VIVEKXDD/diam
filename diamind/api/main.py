@@ -33,7 +33,7 @@ from dotenv import load_dotenv
 # query_agent, prepare_kb, and embed_and_upsert from the parent directory.
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
-load_dotenv(ROOT / ".env")
+load_dotenv(ROOT / ".env", override=True)
 
 from query_agent import DiamondAgentWithTexts, verify_input_guardrail, verify_output_guardrail          # noqa: E402
 from api.models import (                               # noqa: E402

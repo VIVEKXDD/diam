@@ -129,6 +129,15 @@ export function MessageBubble({ message }: { message: Message }) {
   return (
     <div className="flex justify-start w-full">
       <div className="max-w-[85%] w-full space-y-2">
+        {/* Top 3 Sources */}
+        {sources.length > 0 && (
+          <div className="space-y-1.5">
+            {sources.slice(0, 3).map((src, i) => (
+              <SourceCard key={src.id} source={src} index={i + 1} />
+            ))}
+          </div>
+        )}
+
         {/* Gem avatar + answer */}
         <div className="flex items-start gap-2.5">
           <div className="flex-shrink-0 w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/30
@@ -147,33 +156,8 @@ export function MessageBubble({ message }: { message: Message }) {
             {message.demand_raisable && message.recommended_criteria && (
               <RaiseDemandPanel specs={message.recommended_criteria} />
             )}
-
-            {/* Sources toggle */}
-            {sources.length > 0 && (
-              <button
-                onClick={() => setSourcesOpen((v) => !v)}
-                className="mt-3 flex items-center gap-1.5 text-[11px] text-slate-500
-                           hover:text-slate-300 transition-colors"
-              >
-                {sourcesOpen ? (
-                  <ChevronUp className="w-3 h-3" />
-                ) : (
-                  <ChevronDown className="w-3 h-3" />
-                )}
-                {sources.length} source{sources.length !== 1 ? "s" : ""}
-              </button>
-            )}
           </div>
         </div>
-
-        {/* Sources */}
-        {sourcesOpen && sources.length > 0 && (
-          <div className="ml-9 space-y-1.5">
-            {sources.map((src, i) => (
-              <SourceCard key={src.id} source={src} index={i + 1} />
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

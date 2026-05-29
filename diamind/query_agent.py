@@ -31,7 +31,7 @@ from groq import Groq
 # ── Config ─────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = Path(__file__).parent
-load_dotenv(SCRIPT_DIR / ".env")
+load_dotenv(SCRIPT_DIR / ".env", override=True)
 
 PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY", "")
 INDEX_NAME       = os.environ.get("PINECONE_INDEX", "diamond-kb")

@@ -86,7 +86,7 @@ function DomainCard({ s }: { s: SourceDocument }) {
 }
 
 export function SourceCard({ source, index }: { source: SourceDocument; index: number }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const isDiamond = source.doc_type === "diamond_record";
 
   return (
